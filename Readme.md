@@ -39,23 +39,22 @@ This project is a containerized chatbot application that translates natural lang
    cd Text-to-SQL
 
 2. **Build and start the services:**
-```docker-compose up --build```
-This will start: at http://localhost:8501
-postgres (database) at localhost:5432
-pgadmin (database admin UI) at http://localhost:15432
-Access the chatbot:
 
-Open http://localhost:8501
-Enter your Cohere API key and use the default database URL:
+```docker-compose up --build```
+- This will start: at http://localhost:8501
+- postgres (database) at localhost:5432
+- pgadmin (database admin UI) at http://localhost:15432
+- Access the chatbot: Open http://localhost:8501
+- Enter your Cohere API key and use the default database URL:
 ```postgresql+psycopg2://text2sql:text2sql@postgres:5432/netflix```
 
-Ask questions about the Netflix data!
+### Ask questions about the Netflix data!
 Access pgAdmin (optional):
 
 Open http://localhost:15432
 Login with:
-Email: example@mail.com
-Password: example@password
+- Email: example@mail.com
+- Password: example@password
 
 ## Environment Variables
 You can change database credentials and other settings in docker-compose.yml.
