@@ -14,8 +14,7 @@ This project is a containerized chatbot application that translates natural lang
 ## Project Structure
 ```
 . ├── chatbot/
-  │ 
-  ├── app.py # Streamlit chatbot app
+  │ ├── app.py # Streamlit chatbot app
   │ ├── Dockerfile # Chatbot Dockerfile 
   │ └── requirements.txt # Python dependencies 
   ├── postgres/ 
@@ -40,7 +39,7 @@ This project is a containerized chatbot application that translates natural lang
 
 2. **Build and start the services:**
 
-```docker-compose up --build```
+```docker compose up --build```
 - This will start: at http://localhost:8501
 - postgres (database) at localhost:5432
 - pgadmin (database admin UI) at http://localhost:15432
