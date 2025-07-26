@@ -1,0 +1,52 @@
+services:
+  app:
+    build:
+      context: ./chatbot
+      dockerfile: Dockerfile
+    container_name: chatbot
+    ports:
+      - "8501:8501"
+    depends_on:
+      - postgres
+    restart: always
+    networks:
+      - chatbot_network
+
+  postgres:
+    build:
+      context: ./postgres
+    container_name: netflix_postgres
+    environment:
+      POSTGRES_USER: text2sql
+      POSTGRES_PASSWORD: text2sql
+      POSTGRES_DB: netflix
+    ports:
+      - "5432:5432"
+    volumes:
+      - text-to-sql-postgres:/var/lib/postgresql/data
+    restart: always
+    networks:
+      - chatbot_network
+
+  pgadmin:
+    image: dpage/pgadmin4:9.6.0
+    container_name: pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: example@mail.com
+      PGADMIN_DEFAULT_PASSWORD: example@password
+    ports:
+      - "15432:80"
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin
+    networks:
+      - chatbot_network
+
+networks:
+  chatbot_network:
+
+volumes:
+  text-to-sql-postgres:
+  pgadmin-data:
+
+
+# postgresql+psycopg2://text2sql:text2sql@localhost:5432/netflix
